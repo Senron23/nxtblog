@@ -21,7 +21,7 @@ interface BlogData {
   content?: string;
 }
 
-const Page = ({ params }: { params: PageParams }) => {
+export default function Page({ params }: { params: PageParams }) {
   const id = params.id;
   const [data, setData] = useState<BlogData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -355,4 +355,4 @@ const Page = ({ params }: { params: PageParams }) => {
   )
 };
 
-export default Page;
+
