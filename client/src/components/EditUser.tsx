@@ -3,12 +3,10 @@ import React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
 import {
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -90,9 +88,7 @@ const EditUser = () => {
                 <FormControl>
                   <Input placeholder="john.doe@123" {...field} />
                 </FormControl>
-                <FormDescription>
-                  This is your email.
-                </FormDescription>
+                <FormDescription>This is your email.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -106,9 +102,7 @@ const EditUser = () => {
                 <FormControl>
                   <Input placeholder="New York,NY" {...field} />
                 </FormControl>
-                <FormDescription>
-                  This is your public location.
-                </FormDescription>
+                <FormDescription>This is your public location.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}

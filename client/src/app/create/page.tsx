@@ -97,6 +97,7 @@ const QuillEditor = ({
 // Use dynamic import for the QuillEditor component
 import dynamic from "next/dynamic";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import Image from "next/image";
 const DynamicQuillEditor = dynamic(() => Promise.resolve(QuillEditor), {
   ssr: false,
   loading: () => (
@@ -244,7 +245,7 @@ const Page = () => {
                     />
                     {featuredImageUrl && (
                       <div className="relative h-16 w-16 rounded-md overflow-hidden">
-                        <img
+                        <Image
                           src={featuredImageUrl}
                           alt="Featured"
                           className="h-full w-full object-cover"

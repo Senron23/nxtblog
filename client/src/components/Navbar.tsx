@@ -17,7 +17,7 @@ import { SidebarTrigger } from "./ui/sidebar";
 import { useAuth } from "@/app/context/AuthContext";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   const { isAuthenticated, user, logout } = useAuth();
   return (
     <nav className="flex p-4 justify-between items-center">

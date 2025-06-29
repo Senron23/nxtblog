@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import Image from "next/image";
 
 import React from "react";
 
@@ -62,7 +63,7 @@ const SingleUserPage = async ({
               </div>
               <div className="flex items-center gap-2">
                 <span>Avatar:</span>
-                <img
+                <Image
                   src={author_image}
                   alt=""
                   className="w-10 h-10 rounded-full"

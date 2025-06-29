@@ -34,8 +34,22 @@ export function SignUpForm({
     try {
       await signup(name, email, password);
       router.push("/");
-    } catch (err:any) {
-      setError(err.response?.data?.message || "Failed to create an account");
+    } catch (err: unknown) {
+      if (
+        typeof err === "object" &&
+        err !== null &&
+        "response" in err &&
+        typeof (err as any).response === "object" &&
+        (err as any).response !== null &&
+        "data" in (err as any).response &&
+        typeof (err as any).response.data === "object" &&
+        (err as any).response.data !== null &&
+        "message" in (err as any).response.data
+      ) {
+        setError((err as any).response.data.message);
+      } else {
+        setError("Failed to create an account");
+      }
     } finally {
       setIsLoading(false);
     }

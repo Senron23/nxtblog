@@ -1,7 +1,6 @@
 "use client";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { blog_data } from "@/data/blog";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -16,15 +15,14 @@ interface BlogData {
   description: string;
   image: string;
   author: string;
-  author_image?: string; // Make this optional
+  author_image?: string;
   category: string;
   date: string;
   content?: string;
 }
 
-const page = ({ params }: { params: PageParams }) => {
-  const unwrappedParams = React.use(params as any) as PageParams;
-  const id = unwrappedParams.id;
+const Page = ({ params }: { params: PageParams }) => {
+  const id = params.id;
   const [data, setData] = useState<BlogData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -32,12 +30,9 @@ const page = ({ params }: { params: PageParams }) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(`/api/v1/blog/${id}`);
-      console.log(response.data);
       const blogData = response.data.data || response.data;
       setData(blogData);
-    }
-    catch (error) {
-      console.log(error);
+    } catch (error) {
       setError(error as Error);
     } finally {
       setIsLoading(false);
@@ -102,7 +97,7 @@ const page = ({ params }: { params: PageParams }) => {
             </h3>
             <p className="my-3">
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy text
               ever since the 1500s, when an unknown printer took a galley of type
               and scrambled it to make a type specimen book. It has survived not
               only five centuries, but also the leap into electronic typesetting,
@@ -218,7 +213,7 @@ const page = ({ params }: { params: PageParams }) => {
                         <span className="text-sm text-muted-foreground">2 hours ago</span>
                       </div>
                       <p className="text-foreground leading-relaxed">
-                        This is such an insightful article! I've been struggling with this topic for weeks and your explanation really cleared things up for me. Thank you for sharing your expertise!
+                        This is such an insightful article! I&apos;ve been struggling with this topic for weeks and your explanation really cleared things up for me. Thank you for sharing your expertise!
                       </p>
                       <div className="flex items-center space-x-4 mt-3">
                         <button className="text-sm text-muted-foreground hover:text-primary transition-colors">
@@ -248,7 +243,7 @@ const page = ({ params }: { params: PageParams }) => {
                         <span className="text-sm text-muted-foreground">5 hours ago</span>
                       </div>
                       <p className="text-foreground leading-relaxed">
-                        Great post! I'd love to see a follow-up article diving deeper into the advanced techniques you mentioned. Keep up the excellent work! 🚀
+                        Great post! I&apos;d love to see a follow-up article diving deeper into the advanced techniques you mentioned. Keep up the excellent work! 🚀
                       </p>
                       <div className="flex items-center space-x-4 mt-3">
                         <button className="text-sm text-muted-foreground hover:text-primary transition-colors">
@@ -306,7 +301,7 @@ const page = ({ params }: { params: PageParams }) => {
                               <span className="text-sm text-muted-foreground">18 hours ago</span>
                             </div>
                             <p className="text-sm text-foreground leading-relaxed">
-                              Great question, Emma! For larger datasets, I'd recommend implementing pagination and lazy loading. I'll cover this in detail in my next article. Thanks for the feedback!
+                              Great question, Emma! For larger datasets, I&apos;d recommend implementing pagination and lazy loading. I'll cover this in detail in my next article. Thanks for the feedback!
                             </p>
                           </div>
                         </div>
@@ -360,4 +355,4 @@ const page = ({ params }: { params: PageParams }) => {
   )
 };
 
-export default page;
+export default Page;
