@@ -1,6 +1,6 @@
 import BlogDetailClient from "@/components/BlogdetailClient";
 
 
-export default function Page({ params }: { params: { id: string} }) {
-  return <BlogDetailClient id={params.id} />;
+export default function Page( props : any) {
+  return <BlogDetailClient id={props.params.id} />;
 }
